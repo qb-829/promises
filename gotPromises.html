@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones API</title>
+</head>
+<body>
+
+    <h1>This is the Game of Thrones</h1>
+    <div id="alias-div">
+        
+    </div>
+        <button onClick="getCharacter()">Character</button>
+    <script>
+        // const charButton = document.getElementById('aliases');
+        const aliasDiv = document.getElementById('alias-div');
+        //return genders and titles or aliases
+        function getCharacter (){
+            console.log("My Function and My Button are Working")
+        
+        fetch ("https://www.anapioficeandfire.com/api/characters")
+        .then ((response) =>response.json())
+        .then((data) => {
+            console.log(data);
+            // console.log(data[0])
+            // console.log(data[0].aliases[0])
+
+            data.forEach((char) => {
+                console.log(char.aliases)
+                aliasDiv.innerHTML += `<li>${char.aliases}</li>`
+            });  
+        })
+    }
+    </script>
+
+
+    
+</body>
+</html>
